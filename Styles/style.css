@@ -29,3 +29,14 @@ background-color: #92b371;
     cursor: pointer;
 }
 
+.highlight{
+    position: relative;
+    height: 40px;
+    width: 40px;
+    margin: auto;
+    margin-top: 25px;
+    border-radius: 50%;
+    background-color: grey;
+    display: block;
+    opacity: 30%;
+}

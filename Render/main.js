@@ -1,5 +1,7 @@
 import * as piece from "../Data/pieces.js"
 import { ROOT_DIV } from "../Helper/constant.js";
+import { globleState } from "../script.js";
+
 
 
 // use when you need all piece in board
@@ -18,6 +20,12 @@ data.forEach((row) => {
 }
 
 // this function call when game start(only for one time)
+function renderHighlight(squareId){
+ const highlightSpan  = document.createElement("span")
+ highlightSpan.classList.add("highlight")
+ document.getElementById(squareId).appendChild(highlightSpan)
+ clearHighlight()
+}
 function initGameRender(data){
 data.forEach((element) => {
     const rowEl = document.createElement("div")
@@ -74,4 +82,14 @@ data.forEach((element) => {
     pieceRender(data)
 }
 
-export {initGameRender}
+// clear all highlight from the board
+function clearHighlight(){
+const flatData = globleState.flat();
+flatData.forEach((el) => {
+    if(el.highlight){
+        console.log(el)
+    }
+});
+}
+
+export {initGameRender, renderHighlight, clearHighlight}
