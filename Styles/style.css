@@ -29,6 +29,10 @@ background-color: #92b371;
     cursor: pointer;
 }
 
+.highlightYellow{
+background-color: #f7f769;
+}
+
 .highlight{
     position: relative;
     height: 40px;

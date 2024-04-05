@@ -4,6 +4,20 @@ import { globleState } from "../script.js";
 
 
 
+// clear previous self hiighlight
+function clearPreviousSelfHighlight(piece){
+    if(piece){
+        document.getElementById(piece.current_position).classList.remove("highlightYellow")
+    }
+}
+
+// self hghlighted function
+function selfHighlight(piece){    
+const highlightedPiece = document.getElementById(piece.current_position)
+highlightedPiece.classList.add("highlightYellow")
+}
+
+
 // use when you need all piece in board
 function pieceRender(data){
 data.forEach((row) => {
@@ -24,7 +38,7 @@ function renderHighlight(squareId){
  const highlightSpan  = document.createElement("span")
  highlightSpan.classList.add("highlight")
  document.getElementById(squareId).appendChild(highlightSpan)
- clearHighlight()
+ 
 }
 function initGameRender(data){
 data.forEach((element) => {
@@ -84,12 +98,14 @@ data.forEach((element) => {
 
 // clear all highlight from the board
 function clearHighlight(){
+
 const flatData = globleState.flat();
 flatData.forEach((el) => {
-    if(el.highlight){
-        console.log(el)
+    if(el.highlighted){
+        document.getElementById(el.id).innerHTML=""
+        el.highlighted = false;
     }
-});
+    });
 }
 
-export {initGameRender, renderHighlight, clearHighlight}
+export {initGameRender, renderHighlight, clearHighlight, selfHighlight, clearPreviousSelfHighlight}

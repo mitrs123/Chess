@@ -1,4 +1,5 @@
 import { renderHighlight } from "../Render/main.js";
+import { globleState } from "../script.js";
 
 function Greet(){
     alert("Hello Universe")
@@ -8,6 +9,7 @@ function square(color,id,piece) {
     const highlight = function() {
         renderHighlight(this.id)
         this.highlighted = true;
+        
     }
     return{color,id,piece,highlight};
 }
