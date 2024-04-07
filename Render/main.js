@@ -4,6 +4,27 @@ import { globleState } from "../script.js";
 
 
 
+// logic for move elemenet one square to another square
+function moveElement(piece, id){
+    const flatData = globleState.flat();
+    flatData.forEach((el) => {
+        if(el.id == piece.current_position){
+           delete el.piece;
+        }
+        if(el.id==id){
+            el.piece=piece;
+        }
+    });
+    clearHighlight();
+    const previousPiece = document.getElementById(piece.current_position);
+    previousPiece.classList.remove("highlightYellow")
+    const currentPiece = document.getElementById(id)
+
+    currentPiece.innerHTML = previousPiece.innerHTML;
+    previousPiece.innerHTML = "";
+    piece.current_position = id;
+}
+
 // clear previous self hiighlight
 function clearPreviousSelfHighlight(piece){
     if(piece){
@@ -108,4 +129,4 @@ flatData.forEach((el) => {
     });
 }
 
-export {initGameRender, renderHighlight, clearHighlight, selfHighlight, clearPreviousSelfHighlight}
+export {initGameRender, renderHighlight, clearHighlight, selfHighlight, clearPreviousSelfHighlight,moveElement}
